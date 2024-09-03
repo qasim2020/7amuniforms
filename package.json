@@ -1,0 +1,11 @@
+{
+  "name": "7amuniforms",
+  "version": "1.0.0",
+  "description": "",
+  "main": "ecom.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Qasim",
+  "license": "ISC"
+}
