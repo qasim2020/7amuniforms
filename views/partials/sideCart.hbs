@@ -13,7 +13,7 @@
             <div class="mini_cart_content fixcl-scroll">
                 <div class="fixcl-scroll-content">
 
-                    {{#if data.cart}}
+                    {{#if cart}}
 
                     <div class="empty tc mt__40 dn"><i class="las la-shopping-bag pr mb__10"></i>
                         <p>Your cart is empty.</p>
@@ -33,11 +33,11 @@
 
                     {{/if}}
 
-                    {{#if data.cart}}
+                    {{#if cart}}
                     
                     <div class="mini_cart_items js_cat_items lazyload">
 
-                        {{#each data.cart}}
+                        {{#each cart}}
 
                         <div 
                              class="mini_cart_item js_cart_item flex al_center pr oh product" 
@@ -143,7 +143,7 @@
                 <div class="total row fl_between al_center">
                     <div class="col-auto"><strong>Subtotal:</strong></div>
                     <div class="col-auto tr js_cat_ttprice">
-                        <div class="cart_tot_price">PKR {{calcTotalPrice data.cart}}</div>
+                        <div class="cart_tot_price">PKR {{calcTotalPrice cart}}</div>
                     </div>
                 </div>
                 <p class="txt_tax_ship mb__5 fs__12">Taxes, shipping and discounts codes calculated at checkout</p>
@@ -153,10 +153,10 @@
                         <path d="M9 20l-7-7 3-3 4 4L19 4l3 3z"></path>
                     </svg>
                 </p>
-                <a href="/{{data.brand}}/gen/page/kallesShoppingCart/n" class="button btn-cart mt__10 mb__10 js_add_ld d-inline-flex justify-content-center align-items-center cd-imp">View cart</a>
-                <a href="/{{data.brand}}/gen/page/kallesCheckOut/n" class="button btn-checkout mt__10 mb__10 js_add_ld d-inline-flex justify-content-center align-items-center text-white">Check Out</a>
+                <a href="/{{brand}}/gen/page/kallesShoppingCart/n" class="button btn-cart mt__10 mb__10 js_add_ld d-inline-flex justify-content-center align-items-center cd-imp">View cart</a>
+                <a href="/{{brand}}/gen/page/kallesCheckOut/n" class="button btn-checkout mt__10 mb__10 js_add_ld d-inline-flex justify-content-center align-items-center text-white">Check Out</a>
                 <div class="cat_img_trust mt__10 lazyload">
-                    <img class="w__100 lz_op_ef" src="/kalles/images/trust_img2.png" width="360" height="46" alt="">
+                    <img class="w__100 lz_op_ef" src="/images/trust_img2.png" width="360" height="46" alt="">
                 </div>
             </div>
         </div>

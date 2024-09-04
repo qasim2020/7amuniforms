@@ -10,12 +10,14 @@ import bodyParser from 'body-parser';
 
 import config from './config000.json' assert { type: 'json' };
 
+import { registerHelpers } from './helpers/hbsHelpers.js';
 import landingPage from './modules/landingPage.js';
+import loadMore from './modules/loadMore.js';
 
 // Create an Express application
 const app = express();
 
-// Get the __filename and __dirname blogsequivalent
+// Get the __filename and __dirname equivalent
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
@@ -29,23 +31,21 @@ connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: tr
     .then(() => { console.log('MongoDB connected'); })
     .catch((err) => { console.error('MongoDB connection error:', err); });
 
-mongoose.connection.once('open', () => {
-    app.use(
-        session({
-            secret: process.env.sessionSecret,
-            resave: false,
-            saveUninitialized: true,
-            cookie: {
-                maxAge: 20 * 60 * 1000, // 20 minutes
-            },
-            rolling: true,
-            store: MongoStore.create({
-                mongoUrl: process.env.MONGODB_URI
-            })
+// Move session middleware outside of MongoDB connection callback
+app.use(
+    session({
+        secret: process.env.sessionSecret,
+        resave: false,
+        saveUninitialized: true,
+        cookie: {
+            maxAge: 20 * 60 * 1000, // 20 minutes
+        },
+        rolling: true,
+        store: MongoStore.create({
+            mongoUrl: process.env.MONGODB_URI
         })
-    );
-    
-});
+    })
+);
 
 app.use(express.static(join(__dirname, 'static')));
 app.use(bodyParser.json({ limit: '50mb' }));
@@ -62,22 +62,21 @@ app.set('views', join(__dirname, 'views'));
 // Register partials
 hbs.registerPartials(join(__dirname, 'views/partials'));
 
-hbs.registerHelper('getDay', function(date) {
-    let input = new Date(date);
-
-    return input.getDate();
-});
-
-// Helpers
-
+// Register Handlebars helpers
+registerHelpers(); 
 
 // Route handling
 app.get('/', async (req, res) => {
-    console.log("opening 7am landing page");
     req.params.brand = "7am";
     const data = await landingPage(req, res);
     res.render('home', data);
 });
+
+app.post('/load-more', async (req,res) => {
+    req.params.brand = "7am";
+    const data = await loadMore(req,res);
+    res.status(200).send(data);
+})
 
 // Error handling
 app.use((req, res) => {

@@ -19,11 +19,13 @@ const all = {
         return output;
     },
 
-    categories: async function(req,reS) {
+    categories: async function(req,res) {
+        let model = await createModel(`${req.params.brand}-products`);
         return await model.distinct("category").lean();
     },
 
     randomProducts: async function(req,res) {
+        let model = await createModel(`${req.params.brand}-products`);
         return await model.aggregate([
             { $sample: { size: 5 } }
         ]);

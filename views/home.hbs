@@ -1,4 +1,4 @@
-{{> kalles/header title="7am | Home"}}
+{{> header title="7am | Home"}}
 <body class="kalles-template header_full_true des_header_3 css_scrollbar lazy_icons btnt4_style_2 zoom_tp_2 css_scrollbar template-index kalles_toolbar_true hover_img2 swatch_style_rounded swatch_list_size_small label_style_rounded wrapper_full_width header_full_true hide_scrolld_true lazyload">
 
 <div id="kalles-section-header_banner" class="kalles-section-header_banner">
@@ -21,7 +21,7 @@
 </div>
 
 <div id="nt_wrapper">
-    {{> kalles/navbar}}
+    {{> navbar}}
     <div id="nt_content">
         <div class="nt_section type_slideshow type_carousel ">
             <div class="slideshow-wrapper nt_full se_height_cus_h nt_first">
@@ -151,7 +151,7 @@
                 </div>
 
                 <div class="products nt_products_holder row fl_center row_pr_1 cdt_des_5 round_cd_true nt_cover ratio_nt position_8 space_30">
-                    {{#each data.products}}
+                    {{#each products}}
                     <div class="col-lg-3 col-md-3 col-6 pr_animated done mt__30 pr_grid_item product nt_pr desgin__1" myId="{{this._id}}">
                         <div class="product-inner pr">
                             <div class="product-image position-relative oh lazyload">
@@ -164,7 +164,7 @@
                                     </span>
                                     {{/if}}
                                 </span>
-                                <a class="d-block" href="/{{../data.brand}}/gen/page/kallesProduct/{{this._id}}">
+                                <a class="d-block" href="/{{../brand}}/gen/page/kallesProduct/{{this._id}}">
                                     <div class="pr_lazy_img main-img nt_img_ratio nt_bg_lz lazyload padding-top__127_571" data-bgset="{{this.photos.0.medium}}"></div>
                                 </a>
                                 <div class="hover_img pa pe_none t__0 l__0 r__0 b__0 op__0">
@@ -255,7 +255,7 @@
                 </div>
 
                 <div class="products nt_products_holder row fl_center row_pr_1 cdt_des_1 round_cd_false nt_cover ratio_nt position_8 space_30">
-                    {{#each data.newProducts}}
+                    {{#each newProducts}}
                     <div class="col-lg-3 col-md-3 col-6 pr_animated done mt__30 pr_grid_item product nt_pr desgin__1" myId="{{this._id}}">
                         <div class="product-inner pr">
                             <div class="product-image position-relative oh lazyload">
@@ -360,7 +360,7 @@
             </div>
         </div>
     </div>
-    {{> kalles/footer}}
+    {{> footer}}
 </div>
 
 <div class="mask-overlay ntpf t__0 r__0 l__0 b__0 op__0 pe_none"></div>
@@ -449,7 +449,7 @@
 <div id="quick-shop-tpl" class="dn">
 </div>
 
-{{> kalles/sideCart data=data}}
+{{> sideCart data=data}}
 
 <div id="nt_search_canvas" class="nt_fk_canvas dn">
     <div class="nt_mini_cart flex column h__100">
@@ -462,7 +462,7 @@
                 <div class="frm_search_cat mb__20">
                     <select name="product_type" onchange="searchItems(this)">
                         <option value="*">All Categories</option>
-                        {{#each data.categories}}
+                        {{#each categories}}
                         <option value="{{this}}">{{startWithUpperCase this}}</option>
                         {{/each}}
                     </select>
@@ -480,7 +480,7 @@
             <div class="search_header__content mini_cart_content fixcl-scroll widget">
                 <div class="fixcl-scroll-content product_list_widget">
                     <div class="js_prs_search">
-                    {{#each data.randomProducts}}
+                    {{#each randomProducts}}
                         <div class="row mb__10 pb__10">
                             <div class="col widget_img_pr">
                                 <a class="db pr oh" href="product-detail-layout-01.html"><img class="w__100 lz_op_ef lazyload" alt="picto wall clock" data-src="{{this.photos.0.medium}}" width="80" height="80"></a>
@@ -514,8 +514,8 @@
     </div>
 </div>
 
-{{> kalles/login}}
-{{> kalles/mobiletoolbar}}
-{{> kalles/mobilenavbar}}
+{{> login}}
+{{> mobiletoolbar}}
+{{> mobilenavbar}}
 <a id="nt_backtop" class="pf br__50 z__100 des_bt1" href="#"><span class="tc br__50 db cw"><i class="pr pegk pe-7s-angle-up"></i></span></a>
-{{> kalles/bottom}}
+{{> bottom}}

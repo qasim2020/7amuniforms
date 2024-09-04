@@ -13,9 +13,9 @@
 let urlParams = function() {
 
     let url = {
-        brand: window.location.pathname.split("/")[1],
-        permit: window.location.pathname.split("/")[2],
-        requiredType: window.location.pathname.split("/")[3],
+        brand: "7am", 
+        permit: "gen",
+        requiredType: "page",
         module: window.location.pathname.split("/")[4],
         input: window.location.pathname.split("/")[5],
         origin: window.location.origin
@@ -1993,7 +1993,7 @@ let urlParams = function() {
             console.log({myId});
 
             $.ajax({
-                url: `/${urlParams().brand}/gen/data/kallesQuickView/${ myId }`,
+                url: `/quick-view/${ myId }`,
                 method: "GET",
                 success: val => {
 
@@ -2053,11 +2053,15 @@ let urlParams = function() {
                             selectedSize = size.label;
                             selectedMax = size.items.length;
                             myPrice = val.product.sale_price && val.product.sale_price.length > 0
-                                ? `<p class="price_range" id="price_qv">
-                                        <del>PKR ${val.product.price}</del>
-                                        <ins>PKR ${val.product.sale_price}</ins>
+                                ? `<p class="price_range" id="price_qv">
+
+                                        <del>PKR ${val.product.price}</del>
+
+                                        <ins>PKR ${val.product.sale_price}</ins>
+
                                     </p>`
-                                : `<p class="price_range" id="price_qv">
+                                : `<p class="price_range" id="price_qv">
+
                                         PKR ${val.product.price}
                                     </p>`;
                                 
@@ -2085,70 +2089,128 @@ let urlParams = function() {
                     }
 
                     let html = `
-                                <div class="product-quickview single-product-content img_action_zoom kalles-quick-view-tpl">
-                                    <div class="row product-image-summary">
-                                        <div class="col-lg-7 col-md-6 col-12 product-images pr oh">
-                                            <span class="tc nt_labels pa pe_none cw">${label}</span>
-                                            <div class="images">
-                                                <div class="product-images-slider tc equal_nt nt_slider nt_carousel_qv p-thumb_qv nt_contain ratio_imgtrue position_8" data-flickity='{ "fade":true,"cellSelector": ".q-item:not(.is_varhide)","cellAlign": "center","wrapAround": true,"autoPlay": false,"prevNextButtons":true,"adaptiveHeight": true,"imagesLoaded": false, "lazyLoad": 0,"dragThreshold" : 0,"pageDots": true,"rightToLeft": false }'>
+                                <div class="product-quickview single-product-content img_action_zoom kalles-quick-view-tpl">
+
+                                    <div class="row product-image-summary">
+
+                                        <div class="col-lg-7 col-md-6 col-12 product-images pr oh">
+
+                                            <span class="tc nt_labels pa pe_none cw">${label}</span>
+
+                                            <div class="images">
+
+                                                <div class="product-images-slider tc equal_nt nt_slider nt_carousel_qv p-thumb_qv nt_contain ratio_imgtrue position_8" data-flickity='{ "fade":true,"cellSelector": ".q-item:not(.is_varhide)","cellAlign": "center","wrapAround": true,"autoPlay": false,"prevNextButtons":true,"adaptiveHeight": true,"imagesLoaded": false, "lazyLoad": 0,"dragThreshold" : 0,"pageDots": true,"rightToLeft": false }'>
+
                                                 ${photos}
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-5 col-md-6 col-12 summary entry-summary pr">
-                                            <div class="summary-inner gecko-scroll-quick">
-                                                <div class="gecko-scroll-content-quick">
-                                                    <div class="kalles-section-pr_summary kalles-section summary entry-summary mt__30">
-                                                        <h1 class="product_title entry-title fs__16"><a href="product-detail-layout-01.html">${val.product.name}</a></h1>
-                                                        <div class="flex wrap fl_between al_center price-review">
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="col-lg-5 col-md-6 col-12 summary entry-summary pr">
+
+                                            <div class="summary-inner gecko-scroll-quick">
+
+                                                <div class="gecko-scroll-content-quick">
+
+                                                    <div class="kalles-section-pr_summary kalles-section summary entry-summary mt__30">
+
+                                                        <h1 class="product_title entry-title fs__16"><a href="product-detail-layout-01.html">${val.product.name}</a></h1>
+
+                                                        <div class="flex wrap fl_between al_center price-review">
+
                                                             ${myPrice}
-                                                        </div>
-                                                        <div class="pr_short_des">
-                                                            <p class="mg__0">Go kalles this summer with this vintage navy and white striped v-neck t-shirt from the Nike. Perfect for pairing with denim and white kicks for a stylish kalles vibe.</p>
-                                                        </div>
-                                                        <div class="btn-atc atc-slide btn_des_1 btn_txt_3">
-                                                            <div id="callBackVariant_qv" class="nt_pink nt1_ nt2_">
-                                                                <div id="cart-form_qv" class="nt_cart_form variations_form variations_form_qv">
-                                                                    <div class="variations mb__40 style__circle size_medium style_color des_color_1">
-                                                                        <div class="swatch is-label kalles_swatch_js">
-                                                                            <h4 class="swatch__title">Size:
-                                                                                <span class="nt_name_current user_choose_js">${selectedSize}</span>
-                                                                            </h4>
-                                                                            <ul class="swatches-select swatch__list_pr">
+                                                        </div>
+
+                                                        <div class="pr_short_des">
+
+                                                            <p class="mg__0">Go kalles this summer with this vintage navy and white striped v-neck t-shirt from the Nike. Perfect for pairing with denim and white kicks for a stylish kalles vibe.</p>
+
+                                                        </div>
+
+                                                        <div class="btn-atc atc-slide btn_des_1 btn_txt_3">
+
+                                                            <div id="callBackVariant_qv" class="nt_pink nt1_ nt2_">
+
+                                                                <div id="cart-form_qv" class="nt_cart_form variations_form variations_form_qv">
+
+                                                                    <div class="variations mb__40 style__circle size_medium style_color des_color_1">
+
+                                                                        <div class="swatch is-label kalles_swatch_js">
+
+                                                                            <h4 class="swatch__title">Size:
+
+                                                                                <span class="nt_name_current user_choose_js">${selectedSize}</span>
+
+                                                                            </h4>
+
+                                                                            <ul class="swatches-select swatch__list_pr">
+
                                                                                 ${sizes}
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="variations_button in_flex column w__100 buy_qv_false">
-                                                                        <div class="flex wrap">
-                                                                            <div class="quantity pr mr__10 order-1 qty__true" id="sp_qty_qv">
-                                                                                <input type="number" class="input-text qty text tc qty_pr_js qty_cart_js" value="1" name="quantity" max="${selectedMax}" inputmode="numeric">
+                                                                            </ul>
 
-                                                                                <div class="qty tc fs__14">
-                                                                                    <button type="button" class="plus db cb pa pd__0 pr__15 tr r__0">
-                                                                                        <i class="facl facl-plus"></i>
-                                                                                    </button>
-                                                                                    <button type="button" class="minus db cb pa pd__0 pl__15 tl l__0">
-                                                                                        <i class="facl facl-minus"></i>
-                                                                                    </button>
-                                                                                </div>
-                                                                            </div>
+                                                                        </div>
+
+                                                                    </div>
+
+                                                                    <div class="variations_button in_flex column w__100 buy_qv_false">
+
+                                                                        <div class="flex wrap">
+
+                                                                            <div class="quantity pr mr__10 order-1 qty__true" id="sp_qty_qv">
+
+                                                                                <input type="number" class="input-text qty text tc qty_pr_js qty_cart_js" value="1" name="quantity" max="${selectedMax}" inputmode="numeric">
+
+
+                                                                                <div class="qty tc fs__14">
+
+                                                                                    <button type="button" class="plus db cb pa pd__0 pr__15 tr r__0">
+
+                                                                                        <i class="facl facl-plus"></i>
+
+                                                                                    </button>
+
+                                                                                    <button type="button" class="minus db cb pa pd__0 pl__15 tl l__0">
+
+                                                                                        <i class="facl facl-minus"></i>
+
+                                                                                    </button>
+
+                                                                                </div>
+
+                                                                            </div>
+
                                                                             ${cartBtn}
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="product_meta">
+                                                                        </div>
 
-                                                        </div>
-                                                        <a href="product-detail-layout-01.html" class="btn fwsb detail_link p-0 fs__14">View full details<i class="facl facl-right"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                                                    </div>
+
+                                                                </div>
+
+                                                            </div>
+
+                                                        </div>
+
+                                                        <div class="product_meta">
+
+
+                                                        </div>
+
+                                                        <a href="product-detail-layout-01.html" class="btn fwsb detail_link p-0 fs__14">View full details<i class="facl facl-right"></i></a>
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
 
                     `;
 
@@ -2281,52 +2343,93 @@ let urlParams = function() {
                             <div class="qs_imgs_i row al_center mb__30">
                                 <div class="col-auto cl_pr_img">
                                     <div class="pr oh qs_imgs_wrap">
-                                        <div class="row equal_nt qs_imgs nt_slider nt_carousel_qs p-thumb_qs" data-flickity='{"fade":false,"cellSelector":".qs_img_i","cellAlign":"center","wrapAround":true,"autoPlay":false,"prevNextButtons":false,"adaptiveHeight":true,"imagesLoaded":false,"lazyload":0,"dragThreshold":0,"pageDots":false,"rightToLeft":false}'>
+                                        <div class="row equal_nt qs_imgs nt_slider nt_carousel_qs p-thumb_qs" data-flickity='{"fade":false,"cellSelector":".qs_img_i","cellAlign":"center","wrapAround":true,"autoPlay":false,"prevNextButtons":false,"adaptiveHeight":true,"imagesLoaded":false,"lazyload":0,"dragThreshold":0,"pageDots":false,"rightToLeft":false}'>
+
                                             ${photos}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col cl_pr_title tc">
-                                    <h3 class="product-title pr fs__16 mg__0 fwm">
-                                        <a class="cd chp" href="product-detail-layout-01.html">${val.product.name}</a>
-                                    </h3>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="col cl_pr_title tc">
+
+                                    <h3 class="product-title pr fs__16 mg__0 fwm">
+
+                                        <a class="cd chp" href="product-detail-layout-01.html">${val.product.name}</a>
+
+                                    </h3>
+
                                     <div id="price_qs">
                                             ${myPrice}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="qs_info_i tc">
-                                <div class="qs_swatch">
-                                    <div id="callBackVariant_qs" class="nt_green nt1_xs nt2_">
-                                        <div id="cart-form_qs" class="nt_cart_form variations_form variations_form_qs">
-                                            <div class="variations mb__40 style__circle size_medium style_color des_color_1">
-                                                <div class="nt_select_qs1 swatch is-label kalles_swatch_js">
-                                                    <h4 class="swatch__title">Size: <span class="nt_name_current">${selectedSize}</span></h4>
-                                                    <ul class="swatches-select swatch__list_pr">
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="qs_info_i tc">
+
+                                <div class="qs_swatch">
+
+                                    <div id="callBackVariant_qs" class="nt_green nt1_xs nt2_">
+
+                                        <div id="cart-form_qs" class="nt_cart_form variations_form variations_form_qs">
+
+                                            <div class="variations mb__40 style__circle size_medium style_color des_color_1">
+
+                                                <div class="nt_select_qs1 swatch is-label kalles_swatch_js">
+
+                                                    <h4 class="swatch__title">Size: <span class="nt_name_current">${selectedSize}</span></h4>
+
+                                                    <ul class="swatches-select swatch__list_pr">
+
                                                         ${sizes}
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="variations_button in_flex column w__100">
-                                                <div class="flex al_center column">
-                                                    <div class="quantity pr mb__15 order-1 qty__" id="sp_qty_qs">
-                                                        <input type="number" class="input-text qty text tc qty_pr_js qty_cart_js" step="1" min="1" max="${selectedMax}" name="quantity" value="1" inputmode="numeric">
-                                                        <div class="qty tc fs__14">
-                                                            <button type="button" class="plus db cb pa pd__0 pr__15 tr r__0">
-                                                                <i class="facl facl-plus"></i></button>
-                                                            <button type="button" class="minus db cb pa pd__0 pl__15 tl l__0">
-                                                                <i class="facl facl-minus"></i></button>
-                                                        </div>
-                                                    </div>
+                                                    </ul>
+
+                                                </div>
+
+                                            </div>
+
+                                            <div class="variations_button in_flex column w__100">
+
+                                                <div class="flex al_center column">
+
+                                                    <div class="quantity pr mb__15 order-1 qty__" id="sp_qty_qs">
+
+                                                        <input type="number" class="input-text qty text tc qty_pr_js qty_cart_js" step="1" min="1" max="${selectedMax}" name="quantity" value="1" inputmode="numeric">
+
+                                                        <div class="qty tc fs__14">
+
+                                                            <button type="button" class="plus db cb pa pd__0 pr__15 tr r__0">
+
+                                                                <i class="facl facl-plus"></i></button>
+
+                                                            <button type="button" class="minus db cb pa pd__0 pl__15 tl l__0">
+
+                                                                <i class="facl facl-minus"></i></button>
+
+                                                        </div>
+
+                                                    </div>
+
                                                     ${cartBtn}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="product-detail-layout-01.html" class="btn fwsb detail_link dib mt__15">View full details<i class="facl facl-right"></i></a>
-                            </div>
-                        </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <a href="product-detail-layout-01.html" class="btn fwsb detail_link dib mt__15">View full details<i class="facl facl-right"></i></a>
+
+                            </div>
+
+                        </div>
+
                     `;
 
                     drawPop(html);
@@ -2582,11 +2685,15 @@ let urlParams = function() {
                     let html = val.cart.reduce( (total, val, key) => {
 
                         let myPrice = val.product.sale_price && val.product.sale_price.length > 0 
-                        ? ` <div class="cart_price" data="${val.product.sale_price}">
-                                <del>PKR ${val.product.price}</del>
-                                <ins>PKR ${val.product.sale_price}</ins>
+                        ? ` <div class="cart_price" data="${val.product.sale_price}">
+
+                                <del>PKR ${val.product.price}</del>
+
+                                <ins>PKR ${val.product.sale_price}</ins>
+
                             </div> `
-                        : `<div class="cart_price" data="${val.product.price}">
+                        : `<div class="cart_price" data="${val.product.price}">
+
                                 PKR ${val.product.price}
                             </div>`;
 
@@ -2596,47 +2703,87 @@ let urlParams = function() {
                              myId="${val.product._id}" 
                              product="${val.slug}" 
                          >
-                            <div class="ld_cart_bar"></div>
-                            <a href="product-detail-layout-01.html" class="mini_cart_img">
-                                <img class="w__100 lazyload" data-src="${val.product.photos[0].medium}" width="120" height="153" alt="" src="${val.product.photos[0].medium}">
-                            </a>
-                            <div class="mini_cart_info">
-                                <a href="product-detail-layout-01.html" class="mini_cart_title truncate">${val.product.name}</a>
-                                <div class="mini_cart_meta"><p class="cart_meta_variant size" sizeLabel="${val.size.label}">${val.size.size}</p>
-                                    <p class="cart_selling_plan"></p>
-                                    <div class="cart_meta_price price">
+                            <div class="ld_cart_bar"></div>
+
+                            <a href="product-detail-layout-01.html" class="mini_cart_img">
+
+                                <img class="w__100 lazyload" data-src="${val.product.photos[0].medium}" width="120" height="153" alt="" src="${val.product.photos[0].medium}">
+
+                            </a>
+
+                            <div class="mini_cart_info">
+
+                                <a href="product-detail-layout-01.html" class="mini_cart_title truncate">${val.product.name}</a>
+
+                                <div class="mini_cart_meta"><p class="cart_meta_variant size" sizeLabel="${val.size.label}">${val.size.size}</p>
+
+                                    <p class="cart_selling_plan"></p>
+
+                                    <div class="cart_meta_price price">
+
                                         ${myPrice}
-                                    </div>
-                                </div>
-                                <div class="mini_cart_actions">
-                                    <div class="quantity pr mr__10 qty__true">
-                                        <input type="number" class="input-text qty text tc qty_cart_js" step="1" min="1" max="${val.size.items.length}" value="${val.quantity}">
-                                        <div class="qty tc fs__14">
-                                            <button type="button" class="plus db cb pa pd__0 pr__15 tr r__0">
-                                                <i class="facl facl-plus"></i>
-                                            </button>
-                                            <button type="button" class="minus db cb pa pd__0 pl__15 tl l__0 qty_1">
-                                                <i class="facl facl-minus"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <a href="#" class="cart_ac_edit js__qs ttip_nt tooltip_top_right" cartSlug="${val.slug}"><span class="tt_txt">Edit this item</span>
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
-                                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
-                                        </svg>
-                                    </a>
-                                    <a href="#" class="cart_ac_remove js_cart_rem ttip_nt tooltip_top_right" product="${val.slug}"><span class="tt_txt">Remove this item</span>
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                            <polyline points="3 6 5 6 21 6"></polyline>
-                                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                                            <line x1="10" y1="11" x2="10" y2="17"></line>
-                                            <line x1="14" y1="11" x2="14" y2="17"></line>
-                                        </svg>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="mini_cart_actions">
+
+                                    <div class="quantity pr mr__10 qty__true">
+
+                                        <input type="number" class="input-text qty text tc qty_cart_js" step="1" min="1" max="${val.size.items.length}" value="${val.quantity}">
+
+                                        <div class="qty tc fs__14">
+
+                                            <button type="button" class="plus db cb pa pd__0 pr__15 tr r__0">
+
+                                                <i class="facl facl-plus"></i>
+
+                                            </button>
+
+                                            <button type="button" class="minus db cb pa pd__0 pl__15 tl l__0 qty_1">
+
+                                                <i class="facl facl-minus"></i>
+
+                                            </button>
+
+                                        </div>
+
+                                    </div>
+
+                                    <a href="#" class="cart_ac_edit js__qs ttip_nt tooltip_top_right" cartSlug="${val.slug}"><span class="tt_txt">Edit this item</span>
+
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+
+                                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+
+                                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+
+                                        </svg>
+
+                                    </a>
+
+                                    <a href="#" class="cart_ac_remove js_cart_rem ttip_nt tooltip_top_right" product="${val.slug}"><span class="tt_txt">Remove this item</span>
+
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+
+                                            <polyline points="3 6 5 6 21 6"></polyline>
+
+                                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+
+                                            <line x1="10" y1="11" x2="10" y2="17"></line>
+
+                                            <line x1="14" y1="11" x2="14" y2="17"></line>
+
+                                        </svg>
+
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
                     `;
 
                     },"");
@@ -3190,7 +3337,7 @@ let urlParams = function() {
                 skip : $(this).closest(".type_featured_collection").find(".product").get().length
             };
             $.ajax({
-                url: `/${urlParams().brand}/gen/data/kallesLoadMore/n`,
+                url: `/load-more`,
                 method: "POST",
                 data: data,
                 success: val => {
@@ -3218,41 +3365,74 @@ let urlParams = function() {
                                     </span>`;
                         return total += `
                             <div class="col-lg-3 col-md-3 col-6 pr_animated done mt__30 pr_grid_item product nt_pr desgin__1" myId="${item._id}">
-                                <div class="product-inner pr">
-                                    <div class="product-image position-relative oh lazyload">
-                                        <span class="tc nt_labels pa pe_none cw">
+                                <div class="product-inner pr">
+
+                                    <div class="product-image position-relative oh lazyload">
+
+                                        <span class="tc nt_labels pa pe_none cw">
+
                                             ${label}
-                                        </span>
-                                        <a class="d-block" href="product-detail-layout-01.html">
-                                            <div class="pr_lazy_img main-img nt_img_ratio nt_bg_lz lazyload padding-top__127_571" data-bgset="${item.photos[0].medium}"></div>
-                                        </a>
-                                        <div class="hover_img pa pe_none t__0 l__0 r__0 b__0 op__0">
-                                            <div class="pr_lazy_img back-img pa nt_bg_lz lazyload padding-top__127_571" data-bgset="${item.photos[0].medium}"></div>
-                                        </div>
-                                        <div class="hover_button op__0 tc pa flex column ts__03">
-                                            <a class="pr nt_add_qv js_add_qv cd br__40 pl__25 pr__25 bgw tc dib ttip_nt tooltip_top_left" href="#">
-                                                <span class="tt_txt">Quick view</span>
-                                                <i class="iccl iccl-eye"></i>
-                                                <span>Quick view</span>
-                                            </a>
-                                            <a href="#" class="pr pr_atc cd br__40 bgw tc dib js__qs cb chp ttip_nt tooltip_top_left">
-                                                <span class="tt_txt">Quick Shop</span>
-                                                <i class="iccl iccl-cart"></i>
-                                                <span>Quick Shop</span>
-                                            </a>
-                                        </div>
-                                        <div class="product-attr pa ts__03 cw op__0 tc">
-                                            <p class="truncate mg__0 w__100">here come aval sizes</p>
-                                        </div>
-                                    </div>
-                                    <div class="product-info mt__15">
-                                        <h3 class="product-title position-relative fs__14 mg__0 fwm">
-                                            <a class="cd chp" href="product-detail-layout-01.html">${item.name}</a>
-                                        </h3>
+                                        </span>
+
+                                        <a class="d-block" href="product-detail-layout-01.html">
+
+                                            <div class="pr_lazy_img main-img nt_img_ratio nt_bg_lz lazyload padding-top__127_571" data-bgset="${item.photos[0].medium}"></div>
+
+                                        </a>
+
+                                        <div class="hover_img pa pe_none t__0 l__0 r__0 b__0 op__0">
+
+                                            <div class="pr_lazy_img back-img pa nt_bg_lz lazyload padding-top__127_571" data-bgset="${item.photos[0].medium}"></div>
+
+                                        </div>
+
+                                        <div class="hover_button op__0 tc pa flex column ts__03">
+
+                                            <a class="pr nt_add_qv js_add_qv cd br__40 pl__25 pr__25 bgw tc dib ttip_nt tooltip_top_left" href="#">
+
+                                                <span class="tt_txt">Quick view</span>
+
+                                                <i class="iccl iccl-eye"></i>
+
+                                                <span>Quick view</span>
+
+                                            </a>
+
+                                            <a href="#" class="pr pr_atc cd br__40 bgw tc dib js__qs cb chp ttip_nt tooltip_top_left">
+
+                                                <span class="tt_txt">Quick Shop</span>
+
+                                                <i class="iccl iccl-cart"></i>
+
+                                                <span>Quick Shop</span>
+
+                                            </a>
+
+                                        </div>
+
+                                        <div class="product-attr pa ts__03 cw op__0 tc">
+
+                                            <p class="truncate mg__0 w__100">here come aval sizes</p>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="product-info mt__15">
+
+                                        <h3 class="product-title position-relative fs__14 mg__0 fwm">
+
+                                            <a class="cd chp" href="product-detail-layout-01.html">${item.name}</a>
+
+                                        </h3>
+
                                         ${myPrice}
-                                    </div>
-                                </div>
-                            </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
 
                         `;
                     }, "");
@@ -3604,25 +3784,6 @@ let urlParams = function() {
             setTimeout( () => $( '.flickity-enabled' ).kallesDisableNavSlider(), 3000 );
 
         } );
-
-//         // call for webEdit
-// 
-//         $("[we-ser] [e-ser]").get().forEach( (val, key) => { 
-//             $(val).attr({"e-ser": key});
-//         });
-// 
-//         $(document).on("click", "[we-ser]", function(e) {
-// 
-//             if ( $(this).closest("iframe") ) {
-//                 var offTop 
-//                 offTop = $(this).offset().top - 100;
-//                 $('html, body').scrollTop(offTop);
-//                 $(this).fadeOut(100).fadeIn(100).addClass("editing");
-//                 return;
-// 
-//             };
-// 
-//         });
 
     }
 )
