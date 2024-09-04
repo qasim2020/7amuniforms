@@ -73,6 +73,7 @@ hbs.registerHelper('getDay', function(date) {
 
 // Route handling
 app.get('/', async (req, res) => {
+    console.log("opening 7am landing page");
     req.params.brand = "7am";
     const data = await landingPage(req, res);
     res.render('home', data);
