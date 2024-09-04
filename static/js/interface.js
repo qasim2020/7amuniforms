@@ -2264,7 +2264,7 @@ let urlParams = function() {
             };
 
             $.ajax({
-                url: `/${urlParams().brand}/gen/data/kallesQuickView/${ myId }`,
+                url: `/quick-view/${ myId }`,
                 method: "GET",
                 success: val => {
 

@@ -2,6 +2,29 @@ import mongoose from 'mongoose';
 import createModel from './createModel.js';
 
 const all = {
+    getOwnerContactDetails: async function(req,res) {
+
+        let model = await createModel("myapp-themes");
+    
+        let output = {}, result = {};
+    
+        output.brand = await model.findOne({brand: req.params.brand}).lean();
+            
+        result = {
+            brand: output.brand && output.brand.name,
+            brandName: output.brand && output.brand.brandName,
+            brandWebsite: output.brand && output.brand.brandWebsite,
+            brandLogo: output.brand && output.brand.brandLogo, 
+            mobile: output.brand && output.brand.brandMobile,
+            email: output.brand && output.brand.brandEmail,
+            loc: output.brand && output.brand.brandGooglePin,
+            brandDesc: output.brand && output.brand.brandDesc,
+            brandMetaImg: output.brand && output.brand.brandMetaImg
+        };
+    
+        return result;
+    },
+
     trendingProducts: async function(req, res) {
         let model = await createModel(`${req.params.brand}-products`);
         let output = await model.find({trending: "true"}).limit(8).lean();

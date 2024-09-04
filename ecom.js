@@ -74,7 +74,6 @@ app.get('/', async (req, res) => {
 });
 
 app.get('/quick-view/:id', async (req,res) => {
-    console.log("quick-view opening");
     req.params.brand = "7am";
     const data = await quickView(req,res);
     res.status(200).send(data);

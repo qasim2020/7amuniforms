@@ -68,7 +68,6 @@ export const registerHelpers = () => {
     });
 
     hbs.registerHelper('matchValues', (val1,val2) => {
-        console.log(val1, val2);
         try {
             return val1.toString().toLowerCase()  == val2.toString().toLowerCase();
         } catch(e) {
@@ -186,7 +185,6 @@ export const registerHelpers = () => {
     });
 
     hbs.registerHelper('calcTotalPrice', function(cart) {
-        console.log(cart);
         let eachPrice = cart.map( val => Number(val.quantity) * Number(val.product.sale_price || val.product.price) );
         let totalPrice = eachPrice.reduce( (total, val, key) => total += val, 0 );
         return totalPrice;
