@@ -13,6 +13,7 @@ import config from './config000.json' assert { type: 'json' };
 import { registerHelpers } from './helpers/hbsHelpers.js';
 import landingPage from './modules/landingPage.js';
 import loadMore from './modules/loadMore.js';
+import quickView from './modules/quickView.js';
 
 // Create an Express application
 const app = express();
@@ -72,11 +73,18 @@ app.get('/', async (req, res) => {
     res.render('home', data);
 });
 
+app.get('/quick-view/:id', async (req,res) => {
+    console.log("quick-view opening");
+    req.params.brand = "7am";
+    const data = await quickView(req,res);
+    res.status(200).send(data);
+});
+
 app.post('/load-more', async (req,res) => {
     req.params.brand = "7am";
     const data = await loadMore(req,res);
     res.status(200).send(data);
-})
+});
 
 // Error handling
 app.use((req, res) => {

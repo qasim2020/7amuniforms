@@ -5,6 +5,7 @@ import Collections from '../models/collections.js';
 let createModel = async function(modelName) {
 
     try {
+        console.log(modelName);
         let modelExistsAlready = Object.keys(mongoose.models).some(val => val == modelName);
         let schemaExistsAlready = mongoose.modelSchemas && Object.keys(mongoose.modelSchemas).some(val => val == modelName);
         if (modelExistsAlready || schemaExistsAlready) { return mongoose.models[modelName] };
