@@ -73,7 +73,7 @@ hbs.registerHelper('getDay', function(date) {
 
 // Route handling
 app.get('/', async (req, res) => {
-    req.params.brand = "dedicated_parents";
+    req.params.brand = "7am";
     const data = await landingPage(req, res);
     res.render('home', data);
 });
