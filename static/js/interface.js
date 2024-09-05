@@ -2267,9 +2267,6 @@ let urlParams = function() {
                 url: `/quick-view/${ myId }`,
                 method: "GET",
                 success: val => {
-
-                    console.log(val);
-
                     let photos = val.product.photos.reduce( (total, photo, key) => {
                         total += `<div class="col-12 js-sl-item qs_img_i nt_img_ratio lazyload nt_bg_lz" data-bgset="${photo.medium}"></div>`;
                         return total;
@@ -2424,7 +2421,7 @@ let urlParams = function() {
 
                                 </div>
 
-                                <a href="product-detail-layout-01.html" class="btn fwsb detail_link dib mt__15">View full details<i class="facl facl-right"></i></a>
+                                <a href="/product/${val.product._id}" class="btn fwsb detail_link dib mt__15">View full details<i class="facl facl-right"></i></a>
 
                             </div>
 
