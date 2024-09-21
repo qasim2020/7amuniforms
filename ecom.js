@@ -14,6 +14,9 @@ import { registerHelpers } from './helpers/hbsHelpers.js';
 import landingPage from './modules/landingPage.js';
 import loadMore from './modules/loadMore.js';
 import quickView from './modules/quickView.js';
+import cartUpdate from './modules/cartUpdate.js';
+import replaceCartItem from './modules/replaceCartItem.js';
+import removeCartItem from './modules/removeCartItem.js';
 
 // Create an Express application
 const app = express();
@@ -71,6 +74,24 @@ app.get('/', async (req, res) => {
     req.params.brand = "7am";
     const data = await landingPage(req, res);
     res.render('home', data);
+});
+
+app.post('/cartUpdate', async (req, res) => {
+    req.params.brand = "7am";
+    const data = await cartUpdate(req, res);
+    res.status(200).send(data);
+});
+
+app.post('/replaceCartItem', async (req, res) => {
+    req.params.brand = "7am";
+    const data = await replaceCartItem(req, res);
+    res.status(200).send(data);
+});
+
+app.post('/removeCartItem', async (req, res) => {
+    req.params.brand = "7am";
+    const data = await removeCartItem(req, res);
+    res.status(200).send(data);
 });
 
 app.get('/quick-view/:id', async (req,res) => {

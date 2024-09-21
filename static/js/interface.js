@@ -2652,7 +2652,7 @@ let urlParams = function() {
 
             if ( $(this).attr("cartSlug") && $(this).attr("cartSlug").length > 0 ) {
                 console.log("this is an edit cart");
-                url =  `/${urlParams().brand}/gen/data/kallesCartReplaceItem/n`;
+                url =  `/replaceCartItem`;
                 data  = { 
                     oldSlug: $(this).attr("cartSlug"),
                     slug: product.slug+"-"+size.size, 
@@ -2662,7 +2662,7 @@ let urlParams = function() {
                 };
             } else {
                 console.log("this is a new cart item");
-                url =  `/${urlParams().brand}/gen/data/kallesCartUpdate/n`;
+                url =  `/cartUpdate`;
                 data  = { 
                     slug: product.slug+"-"+size.size, 
                     product: product, 
@@ -3561,7 +3561,7 @@ let urlParams = function() {
             };
 
             $.ajax({
-                url: `/${urlParams().brand}/gen/data/kallesRemoveCartItem/n`,
+                url: `/removeCartItem`,
                 method: "POST",
                 data: data,
                 success: val => {
