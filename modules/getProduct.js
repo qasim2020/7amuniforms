@@ -78,6 +78,7 @@ const getProduct = async function(req, res) {
 
     };
 
+    req.params.id = product._id;
     let product_details = await quickView(req,res);
     let first_aval_size = product_details.sizes.find( val => val.stock > 0 );
 
