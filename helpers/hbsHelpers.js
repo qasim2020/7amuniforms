@@ -176,6 +176,12 @@ export const registerHelpers = () => {
         return output;
     });
 
+    hbs.registerHelper('countCart', function(arr) {
+        return arr.reduce((total, item) => {
+            return total + Number(item.quantity);
+        }, 0);
+    });
+
     hbs.registerHelper('multiply', function(one, two) {
         return Number(one) * Number(two);
     });

@@ -10,6 +10,12 @@
 // triggerpjax
 // pagination
 
+let countCart = function(arr) { 
+    return arr.reduce((total, item) => {
+        return total + Number(item.quantity);
+    }, 0);
+};
+
 let urlParams = function() {
 
     let url = {
@@ -2051,7 +2057,7 @@ let urlParams = function() {
                             `;
                             selectedOne = true;
                             selectedSize = size.label;
-                            selectedMax = size.items.length;
+                            selectedMax = size.stock;
                             myPrice = val.product.sale_price && val.product.sale_price.length > 0
                                 ? `<p class="price_range" id="price_qv">
 
@@ -2314,7 +2320,7 @@ let urlParams = function() {
                             `;
                             selectedOne = true;
                             selectedSize = size.label;
-                            selectedMax = size.items.length;
+                            selectedMax = size.stock;
                             myPrice = val.product.sale_price && val.product.sale_price.length > 0
                                 ?  `<span class="price">
                                         <del>PKR ${val.product.price}</del><ins>PKR ${val.product.sale_price}</ins>
@@ -2613,8 +2619,6 @@ let urlParams = function() {
             e.preventDefault();
             e.stopPropagation();
 
-            console.log("add to cart clicked");
-
             let mini_cart_block$ = $( '#nt_cart_canvas' ),
                 btn$             = $( this ),
                 quantity = btn$.closest(".product-quickview, .kalles-quick-shop, .product-selected").find(".quantity").find("input").val(),
@@ -2651,7 +2655,6 @@ let urlParams = function() {
             let data = {}, url = "";
 
             if ( $(this).attr("cartSlug") && $(this).attr("cartSlug").length > 0 ) {
-                console.log("this is an edit cart");
                 url =  `/replaceCartItem`;
                 data  = { 
                     oldSlug: $(this).attr("cartSlug"),
@@ -2661,7 +2664,6 @@ let urlParams = function() {
                     size: size 
                 };
             } else {
-                console.log("this is a new cart item");
                 url =  `/cartUpdate`;
                 data  = { 
                     slug: product.slug+"-"+size.size, 
@@ -2676,8 +2678,6 @@ let urlParams = function() {
                 method: "POST",
                 data: data,
                 success: val => {
-
-                    console.log( val );
 
                     let html = val.cart.reduce( (total, val, key) => {
 
@@ -2727,7 +2727,7 @@ let urlParams = function() {
 
                                     <div class="quantity pr mr__10 qty__true">
 
-                                        <input type="number" class="input-text qty text tc qty_cart_js" step="1" min="1" max="${val.size.items.length}" value="${val.quantity}">
+                                        <input type="number" class="input-text qty text tc qty_cart_js" step="1" min="1" max="${val.size.stock}" value="${val.quantity}">
 
                                         <div class="qty tc fs__14">
 
@@ -2788,13 +2788,12 @@ let urlParams = function() {
                     mini_cart_block$.find(".mini_cart_items").removeClass("dn").html( html );
                     mini_cart_block$.find(".mini_cart_tool").removeClass("dn");
                     mini_cart_block$.find(".empty.tc").addClass("dn").css({display: "none"});
-                    $(".tcount.cart,  .toolbar_count").html( val.cart.length );
+                    $(".tcount.cart,  .toolbar_count").html( countCart(val.cart) );
 
                     let newSlug = data.slug;
                     let oldSlug = $(this).closest("#content_quickview").attr("product");
-                    console.log({oldSlug, newSlug});
                     $(`.cart_item[product=${oldSlug}]`).attr({product: newSlug});
-                    $(`.cart_item[product=${newSlug}]`).find(".qty_cart_js").attr({max: size.items.length});
+                    $(`.cart_item[product=${newSlug}]`).find(".qty_cart_js").attr({max: size.stock});
                     $(`.mini_cart_item[product=${newSlug}]`).refreshCart();
 
                     drawPop();
@@ -2856,6 +2855,7 @@ let urlParams = function() {
 
             //change quantity & name in front end 
             $(`[product=${product}]`).find(".qty.qty_cart_js").val( value );
+
             if ( $(this).closest(".mini_cart_item").length > 0 ) {
                 let sizeLabel = $(`.mini_cart_item[product=${product}]`).find(".cart_meta_variant.size").attr("sizeLabel");
                 let productName = $(`.mini_cart_item[product=${product}]`).find(".mini_cart_title").html();
@@ -2874,10 +2874,13 @@ let urlParams = function() {
                 };
 
                 $.ajax({
-                    url: `/${urlParams().brand}/gen/data/kallesChangeCartQty/n`,
+                    url: `/changeCartQuantity`,
                     method: "POST",
                     data: data,
-                    success: val => console.log(val),
+                    success: val => {
+                        $(".tcount.cart,  .toolbar_count").html( countCart(val.cart) );
+                        console.log(`cart count is now ${ countCart(val.cart) }..`)
+                    },
                 }).fail( val => console.log(val) );
 
             };
@@ -3565,7 +3568,7 @@ let urlParams = function() {
                 method: "POST",
                 data: data,
                 success: val => {
-                    $(".tcount.cart,  .toolbar_count").html( val.cart.length );
+                    $(".tcount.cart,  .toolbar_count").html( countCart(val.cart) );
                     redrawCart();
                 }
             }).fail( err => console.log(err) );

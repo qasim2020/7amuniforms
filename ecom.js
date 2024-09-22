@@ -17,6 +17,7 @@ import quickView from './modules/quickView.js';
 import cartUpdate from './modules/cartUpdate.js';
 import replaceCartItem from './modules/replaceCartItem.js';
 import removeCartItem from './modules/removeCartItem.js';
+import changeCartQuantity from './modules/changeCartQuantity.js';
 
 // Create an Express application
 const app = express();
@@ -91,6 +92,12 @@ app.post('/replaceCartItem', async (req, res) => {
 app.post('/removeCartItem', async (req, res) => {
     req.params.brand = "7am";
     const data = await removeCartItem(req, res);
+    res.status(200).send(data);
+});
+
+app.post('/changeCartQuantity', async (req, res) => {
+    req.params.brand = "7am";
+    const data = await changeCartQuantity(req, res);
     res.status(200).send(data);
 });
 
