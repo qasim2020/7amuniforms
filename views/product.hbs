@@ -1,4 +1,5 @@
-{{> kalles/header title="7am | Product"}}
+{{> header title="7am | Product"}}
+
 <body class="kalles-template single-product-template zoom_tp_2 header_full_true des_header_3 css_scrollbar lazy_icons btnt4_style_2 css_scrollbar template-index kalles_toolbar_true hover_img2 swatch_style_rounded swatch_list_size_small label_style_rounded wrapper_full_width header_full_true hide_scrolld_true lazyload">
 
 <!--head banner-->
@@ -25,7 +26,7 @@
 <div id="nt_wrapper">
 
     <!-- header -->
-    {{> kalles/navbar}} 
+    {{> navbar}} 
     <!-- end header -->
 
     <div id="nt_content">
@@ -37,20 +38,20 @@
                     <div class="row al_center">
                         <div class="col">
                             <nav class="sp-breadcrumb">
-                                <a href="/{{data.brand}}/gen/page/landingPage/n">Home</a>
+                                <a href="/">Home</a>
                                 <i class="facl facl-angle-right"></i>
-                                <a href="/{{data.brand}}/gen/page/kallesShop/n?school={{data.product.school}}">{{data.product.school}}</a>
+                                <a href="/shop?school={{product.school}}">{{product.school}}</a>
                                 <i class="facl facl-angle-right"></i>
-                                {{data.product.name}}
+                                {{product.name}}
                             </nav>
                         </div>
                         <div class="col-auto flex al_center">
-                            {{#if data.siblings}}
-                            <a href="/{{data.brand}}/gen/page/kallesProduct/{{data.siblings.0.product._id}}" class="pl__5 pr__5 fs__18 cd chp ttip_nt tooltip_bottom_left"><i class="las la-angle-left"></i><span class="tt_txt">{{data.siblings.0.product.name}}</span></a>
-                            <a href="/{{data.brand}}/gen/page/kallesShop/n?school={{data.product.school}}" class="pl__5 pr__5 fs__20 cd chp ttip_nt tooltip_bottom_left"><i class="fwb iccl iccl-grid fs__15"></i><span class="tt_txt">Back to {{data.product.school}}</span></a>
-                            <a href="/{{data.brand}}/gen/page/kallesProduct/{{data.siblings.2.product._id}}" class="pl__5 pr__5 fs__18 cd chp ttip_nt tooltip_bottom_left"><i class="las la-angle-right"></i><span class="tt_txt">{{data.siblings.2.product.name}}</span></a>
+                            {{#if siblings}}
+                            <a href="/product/{{siblings.0.product.slug}}" class="pl__5 pr__5 fs__18 cd chp ttip_nt tooltip_bottom_left"><i class="las la-angle-left"></i><span class="tt_txt">{{siblings.0.product.name}}</span></a>
+                            <a href="/shop?school={{product.school}}" class="pl__5 pr__5 fs__20 cd chp ttip_nt tooltip_bottom_left"><i class="fwb iccl iccl-grid fs__15"></i><span class="tt_txt">Back to {{product.school}}</span></a>
+                            <a href="/product/{{siblings.2.product.slug}}" class="pl__5 pr__5 fs__18 cd chp ttip_nt tooltip_bottom_left"><i class="las la-angle-right"></i><span class="tt_txt">{{siblings.2.product.name}}</span></a>
                             {{else}}
-                            <a href="/{{data.brand}}/gen/page/kallesShop/n?school={{data.product.school}}" class="pl__5 pr__5 fs__20 cd chp ttip_nt tooltip_bottom_left"><i class="fwb iccl iccl-grid fs__15"></i><span class="tt_txt">Back to {{data.product.school}}</span></a>
+                            <a href="shop?school={{product.school}}" class="pl__5 pr__5 fs__20 cd chp ttip_nt tooltip_bottom_left"><i class="fwb iccl iccl-grid fs__15"></i><span class="tt_txt">Back to {{product.school}}</span></a>
                             {{/if}}
                         </div>
                     </div>
@@ -66,8 +67,8 @@
                                 <div class="row theiaStickySidebar">
                                     <div class="col-12 col-lg col_thumb">
                                         <div class="p-thumb p-thumb_ppr images sp-pr-gallery equal_nt nt_contain ratio_imgtrue position_8 nt_slider pr_carousel" data-flickity='{"initialIndex": ".media_id_001","fade":true,"draggable":">1","cellAlign": "center","wrapAround": true,"autoPlay": false,"prevNextButtons":true,"adaptiveHeight": true,"imagesLoaded": false, "lazyLoad": 0,"dragThreshold" : 6,"pageDots": false,"rightToLeft": false }'>
-                                            {{#each data.product.photos}}
-                                            <div class="img_ptw p_ptw p-item sp-pr-gallery__img w__100 nt_bg_lz lazyload padding-top__127_66 media_id_001" data-mdid="001" data-height="1440" data-width="1128" data-ratio="0.7833333333333333" data-mdtype="image" data-src="{{this.large}}" data-bgset="{{this.large}}" data-cap="{{../data.product.name}}"></div>
+                                            {{#each product.photos}}
+                                            <div class="img_ptw p_ptw p-item sp-pr-gallery__img w__100 nt_bg_lz lazyload padding-top__127_66 media_id_001" data-mdid="001" data-height="1440" data-width="1128" data-ratio="0.7833333333333333" data-mdtype="image" data-src="{{this.large}}" data-bgset="{{this.large}}" data-cap="{{../product.name}}"></div>
                                             {{/each}}
                                         </div>
                                         <div class="p_group_btns pa flex">
@@ -89,14 +90,14 @@
                             <div class="col-md-6 col-12 product-infors pr_sticky_su">
                                 <div class="theiaStickySidebar">
                                     <div class="kalles-section-pr_summary kalles-section summary entry-summary mt__30">
-                                        <h1 class="product_title entry-title fs__16">{{data.product.name}}</h1>
+                                        <h1 class="product_title entry-title fs__16">{{product.name}}</h1>
                                         <div class="flex wrap fl_between al_center price-review">
                                             <p class="price_range" id="price_ppr">
-                                                {{#if data.product.sale}}
-                                                <del>PKR {{data.product.price}}</del>
-                                                <ins>PKR {{data.product.sale_price}}</ins>
+                                                {{#if product.sale}}
+                                                <del>PKR {{product.price}}</del>
+                                                <ins>PKR {{product.sale_price}}</ins>
                                                 {{else}}
-                                                PKR {{data.product.price}}
+                                                PKR {{product.price}}
                                                 {{/if}}
                                             </p>
                                             <a href="#tab_reviews_product" class="rating_sp_kl dib">
@@ -113,15 +114,15 @@
                                             </a>
                                         </div>
                                         <div class="pr_short_des">
-                                            <p class="mg__0">{{data.product.description}}</p>
+                                            <p class="mg__0">{{product.description}}</p>
                                         </div>
                                         <div class="btn-atc atc-slide btn_full_true btn_des_1 btn_txt_3">
                                             <div id="callBackVariant_ppr" class="product-selected">
                                                 <div class="variations mb__40 style__circle size_medium style_color des_color_1">
                                                     <div class="swatch is-label kalles_swatch_js">
-                                                        {{#if data.avalSize}}
+                                                        {{#if avalSize}}
                                                         <h4 class="swatch__title">Size:
-                                                            <span class="nt_name_current user_choose_js">{{data.avalSize.label}}</span>
+                                                            <span class="nt_name_current user_choose_js">{{avalSize.label}}</span>
                                                         </h4>
                                                         {{ else }}
 
@@ -129,7 +130,7 @@
 
                                                         {{/if}}
                                                         <ul class="swatches-select swatch__list_pr d-flex">
-                                                            {{#each data.sizes}}
+                                                            {{#each sizes}}
 
                                                                 {{#if ( matchValues this.stock 0 ) }}
 
@@ -159,7 +160,7 @@
                                                     <div class="variations_button in_flex column w__100 buy_qv_false">
                                                         <div class="flex wrap">
                                                             <div class="quantity pr mr__10 order-1 qty__true d-inline-block" id="sp_qty_ppr">
-                                                                <input type="number" class="input-text qty text tc qty_pr_js qty_cart_js" name="quantity" value="1" max="{{data.avalSize.stock}}">
+                                                                <input type="number" class="input-text qty text tc qty_pr_js qty_cart_js" name="quantity" value="1" max="{{avalSize.stock}}">
                                                                 <div class="qty tc fs__14">
                                                                     <button type="button" class="plus db cb pa pd__0 pr__15 tr r__0">
                                                                         <i class="facl facl-plus"></i></button>
@@ -175,7 +176,6 @@
                                             </div>
                                         </div>
                                         <div id="trust_seal_ppr" class="pr_trust_seal tl_md tc">
-
                                             <img class="img_tr_s1 lazyload w__100 max-width__330px" src="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%202244%20285%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3C%2Fsvg%3E" alt="" data-srcset="/kalles/images/single-product/trust_img2.png"/>
                                         </div>
                                         <div class="extra-link mt__35 fwsb">
@@ -1517,7 +1517,7 @@
     </div>
 
     <!-- footer -->
-    {{> kalles/footer}}
+    {{> footer}}
     <!-- end footer -->
 
 </div>
@@ -1795,7 +1795,7 @@
 <!--end quick shop-->
 
 <!-- mini cart box -->
-{{> kalles/sideCart}}
+{{> sideCart}}
 <!-- end mini cart box-->
 
 <!-- search box -->
@@ -1891,15 +1891,15 @@
 <!-- end search box -->
 
 <!-- login box -->
-{{> kalles/login}}
+{{> login}}
 <!-- end login box -->
 
 <!-- mobile toolbar -->
-{{> kalles/mobiletoolbar}}
+{{> mobiletoolbar}}
 <!-- end mobile toolbar -->
 
 <!-- mobile menu -->
-{{> kalles/mobilenavbar}}
+{{> mobilenavbar}}
 <!-- end mobile menu -->
 
 <!-- popup ask a question-->
@@ -2902,5 +2902,5 @@
 <!-- back to top button-->
 <a id="nt_backtop" class="pf br__50 z__100 des_bt1" href="#"><span class="tc br__50 db cw"><i class="pr pegk pe-7s-angle-up"></i></span></a>
 
-{{> kalles/bottom}}
+{{> bottom}}
 

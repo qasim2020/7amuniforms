@@ -2122,7 +2122,7 @@ let urlParams = function() {
 
                                                     <div class="kalles-section-pr_summary kalles-section summary entry-summary mt__30">
 
-                                                        <h1 class="product_title entry-title fs__16"><a href="product-detail-layout-01.html">${val.product.name}</a></h1>
+                                                        <h1 class="product_title entry-title fs__16"><a href="/product/${val.product.slug}">${val.product.name}</a></h1>
 
                                                         <div class="flex wrap fl_between al_center price-review">
 
@@ -2203,7 +2203,7 @@ let urlParams = function() {
 
                                                         </div>
 
-                                                        <a href="product-detail-layout-01.html" class="btn fwsb detail_link p-0 fs__14">View full details<i class="facl facl-right"></i></a>
+                                                        <a href="/product/${val.product.slug}" class="btn fwsb detail_link p-0 fs__14">View full details<i class="facl facl-right"></i></a>
 
                                                     </div>
 
@@ -2359,7 +2359,7 @@ let urlParams = function() {
 
                                     <h3 class="product-title pr fs__16 mg__0 fwm">
 
-                                        <a class="cd chp" href="product-detail-layout-01.html">${val.product.name}</a>
+                                        <a class="cd chp" href="/product/${val.product.slug}">${val.product.name}</a>
 
                                     </h3>
 
@@ -2427,7 +2427,7 @@ let urlParams = function() {
 
                                 </div>
 
-                                <a href="/product/${val.product._id}" class="btn fwsb detail_link dib mt__15">View full details<i class="facl facl-right"></i></a>
+                                <a href="/product/${val.product.slug}" class="btn fwsb detail_link dib mt__15">View full details<i class="facl facl-right"></i></a>
 
                             </div>
 
@@ -2702,7 +2702,7 @@ let urlParams = function() {
                          >
                             <div class="ld_cart_bar"></div>
 
-                            <a href="product-detail-layout-01.html" class="mini_cart_img">
+                            <a href="/product/${val.product.slug}" class="mini_cart_img">
 
                                 <img class="w__100 lazyload" data-src="${val.product.photos[0].medium}" width="120" height="153" alt="" src="${val.product.photos[0].medium}">
 
@@ -2710,7 +2710,7 @@ let urlParams = function() {
 
                             <div class="mini_cart_info">
 
-                                <a href="product-detail-layout-01.html" class="mini_cart_title truncate">${val.product.name}</a>
+                                <a href="/product/${val.product.slug}" class="mini_cart_title truncate">${val.product.name}</a>
 
                                 <div class="mini_cart_meta"><p class="cart_meta_variant size" sizeLabel="${val.size.label}">${val.size.size}</p>
 
@@ -3332,7 +3332,6 @@ let urlParams = function() {
             e.preventDefault();
             let $this = $( this );
             $this.addClass( 'jscl_ld' );
-            console.log("load item into the field");
             let data = {
                 skip : $(this).closest(".type_featured_collection").find(".product").get().length
             };
@@ -3341,9 +3340,7 @@ let urlParams = function() {
                 method: "POST",
                 data: data,
                 success: val => {
-                    console.log(val);
                     let html = val.products.reduce( (total, item, key) => {
-
 
                         let label = "",
                             myPrice = "";
@@ -3374,7 +3371,7 @@ let urlParams = function() {
                                             ${label}
                                         </span>
 
-                                        <a class="d-block" href="product-detail-layout-01.html">
+                                        <a class="d-block" href="/product/${item.slug}">
 
                                             <div class="pr_lazy_img main-img nt_img_ratio nt_bg_lz lazyload padding-top__127_571" data-bgset="${item.photos[0].medium}"></div>
 
@@ -3422,7 +3419,7 @@ let urlParams = function() {
 
                                         <h3 class="product-title position-relative fs__14 mg__0 fwm">
 
-                                            <a class="cd chp" href="product-detail-layout-01.html">${item.name}</a>
+                                            <a class="cd chp" href="/product/${item.slug}">${item.name}</a>
 
                                         </h3>
 
@@ -3440,8 +3437,6 @@ let urlParams = function() {
                     $(this).closest(".type_featured_collection").find(".products").append( html );
 
                     let newCount = $(this).closest(".type_featured_collection").find(".product").get().length;
-
-                    // console.log({newCount, count: val.count});
 
                     if (val.count <= newCount) $(this).css({display: "none"});
                 }
@@ -3631,7 +3626,6 @@ let urlParams = function() {
                 meta.push(cart);
             });
 
-            // console.log("fixing the items portion in this array");
             let getFormattedDate = function() {
                 let date = new Date();
                 let dtg = date.toString().split(" ");

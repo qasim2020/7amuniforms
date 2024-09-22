@@ -18,6 +18,7 @@ import cartUpdate from './modules/cartUpdate.js';
 import replaceCartItem from './modules/replaceCartItem.js';
 import removeCartItem from './modules/removeCartItem.js';
 import changeCartQuantity from './modules/changeCartQuantity.js';
+import getProduct from './modules/getProduct.js';
 
 // Create an Express application
 const app = express();
@@ -76,6 +77,13 @@ app.get('/', async (req, res) => {
     const data = await landingPage(req, res);
     res.render('home', data);
 });
+
+app.get('/product/:slug', async (req,res) => {
+    req.params.brand = "7am";
+    const data = await getProduct(req,res);
+    res.render('product.hbs', data);
+});
+
 
 app.post('/cartUpdate', async (req, res) => {
     req.params.brand = "7am";

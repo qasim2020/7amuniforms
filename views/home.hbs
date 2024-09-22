@@ -164,7 +164,7 @@
                                     </span>
                                     {{/if}}
                                 </span>
-                                <a class="d-block" href="/{{../brand}}/gen/page/kallesProduct/{{this._id}}">
+                                <a class="d-block" href="/product/{{this.slug}}">
                                     <div class="pr_lazy_img main-img nt_img_ratio nt_bg_lz lazyload padding-top__127_571" data-bgset="{{this.photos.0.medium}}"></div>
                                 </a>
                                 <div class="hover_img pa pe_none t__0 l__0 r__0 b__0 op__0">
@@ -188,7 +188,7 @@
                             </div>
                             <div class="product-info mt__15">
                                 <h3 class="product-title position-relative fs__14 mg__0 fwm">
-                                    <a class="cd chp" href="/7am/gen/page/kallesProduct/{{this._id}}">{{this.name}}</a>
+                                    <a class="cd chp" href="/product/{{this.slug}}">{{this.name}}</a>
                                 </h3>
                                 <span class="price dib mb__5">
                                     {{#if this.sale}}
@@ -268,7 +268,7 @@
                                     </span>
                                     {{/if}}
                                 </span>
-                                <a class="d-block" href="/{{data.brand}}/gen/page/kallesProduct/{{this._id}}">
+                                <a class="d-block" href="/product/{{this.slug}}">
                                     <div class="pr_lazy_img main-img nt_img_ratio nt_bg_lz lazyload padding-top__127_571" data-bgset="{{this.photos.0.medium}}"></div>
                                 </a>
                                 <div class="hover_img pa pe_none t__0 l__0 r__0 b__0 op__0">
@@ -483,10 +483,10 @@
                     {{#each randomProducts}}
                         <div class="row mb__10 pb__10">
                             <div class="col widget_img_pr">
-                                <a class="db pr oh" href="product-detail-layout-01.html"><img class="w__100 lz_op_ef lazyload" alt="picto wall clock" data-src="{{this.photos.0.medium}}" width="80" height="80"></a>
+                                <a class="db pr oh" href="/product/{{this.slug}}"><img class="w__100 lz_op_ef lazyload" alt="picto wall clock" data-src="{{this.photos.0.medium}}" width="80" height="80"></a>
                             </div>
                             <div class="col widget_if_pr">
-                                <a class="product-title db" href="/7am/gen/page/kallesProduct/{{this._id}}">{{this.name}}</a>
+                                <a class="product-title db" href="/product/{{this.slug}}">{{this.name}}</a>
                                 {{#if this.sale}}
                                 <del>PKR {{this.price}}</del>
                                 <ins>PKR {{this.sale_price}}</ins>
