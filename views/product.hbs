@@ -100,7 +100,7 @@
                                                 PKR {{product.price}}
                                                 {{/if}}
                                             </p>
-                                            <a href="#tab_reviews_product" class="rating_sp_kl dib">
+                                            {{!-- <a href="#tab_reviews_product" class="rating_sp_kl dib">
                                                 <div class="kalles-rating-result">
                                                     <span class="kalles-rating-result__pipe">
                                                         <span class="kalles-rating-result__start kalles-rating-result__start--big"></span>
@@ -111,7 +111,7 @@
                                                     </span>
                                                     <span class="kalles-rating-result__number">(12 reviews)</span>
                                                 </div>
-                                            </a>
+                                            </a> --}}
                                         </div>
                                         <div class="pr_short_des">
                                             <p class="mg__0">{{product.description}}</p>
@@ -138,15 +138,15 @@
                                                                     <span class="swatch__value_pr">{{this.label}}</span>
                                                                 </li>
 
-                                                                {{else if ( matchValues this.size ../data.avalSize.size ) }}
+                                                                {{else if ( matchValues this.size ../avalSize.size ) }}
 
-                                                                <li class="nt-swatch swatch_pr_item pr is-selected" data-escape="{{this.label}}" my-product="{{json ../data.product}}" my-data="{{json this}}">
+                                                                <li class="nt-swatch swatch_pr_item pr is-selected" data-escape="{{this.label}}" my-product="{{json ../product}}" my-data="{{json this}}">
                                                                     <span class="swatch__value_pr">{{this.label}}</span>
                                                                 </li>
 
                                                                 {{else}}
 
-                                                                <li class="nt-swatch swatch_pr_item pr" data-escape="{{this.label}}" my-product="{{json ../data.product}}" my-data="{{json this}}">
+                                                                <li class="nt-swatch swatch_pr_item pr" data-escape="{{this.label}}" my-product="{{json ../product}}" my-data="{{json this}}">
                                                                     <span class="swatch__value_pr">{{this.label}}</span>
                                                                 </li>
 
@@ -176,18 +176,18 @@
                                             </div>
                                         </div>
                                         <div id="trust_seal_ppr" class="pr_trust_seal tl_md tc">
-                                            <img class="img_tr_s1 lazyload w__100 max-width__330px" src="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%202244%20285%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3C%2Fsvg%3E" alt="" data-srcset="/kalles/images/single-product/trust_img2.png"/>
+                                            <img class="img_tr_s1 lazyload w__100 max-width__330px" src="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%202244%20285%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3C%2Fsvg%3E" alt="" data-srcset="/images/single-product/trust_img2.png"/>
                                         </div>
                                         <div class="extra-link mt__35 fwsb">
                                             <a class="ajax_pp_js cd chp mr__20" href="#" data-id="#popup-size-guide">Size Guide</a>
                                             <a class="ajax_pp_js cd chp mr__20" href="#" data-id="#popup-delivery-and-return">Delivery &amp; Return</a>
                                             <a class="ajax_pp_js cd chp" href="#" data-id="#popup-ask-a-question">Ask a Question</a>
                                         </div>
-                                        <div class="product_meta">
+                                        {{!-- <div class="product_meta">
                                             <span class="sku_wrapper"><span class="cb">SKU:</span> <span class="sku value cg d-inline-block">P15-2</span></span>
                                             <span class="posted_in"><span class="cb">Categories:</span> <a href="shop-filter-options.html" class="cg">All</a>, <a href="shop-filter-options.html" class="cg">Best seller</a>, <a href="shop-filter-options.html" class="cg">Bottom</a>, <a href="shop-filter-options.html" class="cg">Dress</a>, <a href="shop-filter-options.html" class="cg">New Arrival</a>, <a href="shop-filter-options.html" class="cg">Women</a></span>
                                             <span class="tagged_as"><span class="cb">Tags:</span> <a href="shop-filter-options.html" class="cg">Color Black</a>, <a href="shop-filter-options.html" class="cg">Color Grey</a>, <a href="shop-filter-options.html" class="cg">Color Pink</a>, <a href="shop-filter-options.html" class="cg">Price $7-$50</a>, <a href="shop-filter-options.html" class="cg">Size L</a>, <a href="shop-filter-options.html" class="cg">Size M</a>, <a href="shop-filter-options.html" class="cg">Size S</a></span>
-                                        </div>
+                                        </div> --}}
                                         <div class="social-share tc">
                                             <div class="at-share-btn-elements kalles-social-media d-block text-left fs__0 lh__1">
                                                 <a href="https://www.facebook.com/" class="at-icon-wrapper at-share-btn at-svc-facebook bg-white kalles-social-media__btn">
@@ -197,7 +197,7 @@
                                                         </g>
                                                     </svg>
                                                 </a>
-                                                <a href="https://twitter.com/" class="at-icon-wrapper at-share-btn at-svc-twitter bg-white kalles-social-media__btn">
+                                                <a href="https://x.com/" class="at-icon-wrapper at-share-btn at-svc-twitter bg-white kalles-social-media__btn">
                                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="at-icon at-icon-twitter">
                                                         <g>
                                                             <path d="M27.996 10.116c-.81.36-1.68.602-2.592.71a4.526 4.526 0 0 0 1.984-2.496 9.037 9.037 0 0 1-2.866 1.095 4.513 4.513 0 0 0-7.69 4.116 12.81 12.81 0 0 1-9.3-4.715 4.49 4.49 0 0 0-.612 2.27 4.51 4.51 0 0 0 2.008 3.755 4.495 4.495 0 0 1-2.044-.564v.057a4.515 4.515 0 0 0 3.62 4.425 4.52 4.52 0 0 1-2.04.077 4.517 4.517 0 0 0 4.217 3.134 9.055 9.055 0 0 1-5.604 1.93A9.18 9.18 0 0 1 6 23.85a12.773 12.773 0 0 0 6.918 2.027c8.3 0 12.84-6.876 12.84-12.84 0-.195-.005-.39-.014-.583a9.172 9.172 0 0 0 2.252-2.336" fill-rule="evenodd"></path>
@@ -240,7 +240,7 @@
             <!--Frequently Bought Together Section-->
             <div id="wrap_fbt" class="container">
                 <div class="wrap_title mb__20">
-                    <h3 class="section-title pr fs__24 title_1 fbt-title">Frequently Bought Together</h3>
+                    <h3 class="section-title pr fs__24 title_1 fbt-title">Similar products</h3>
                 </div>
                 <div class="kl_fbt_wrap js_wrap_group">
                     <form method="post" action="#" id="fbt_frm_id">
@@ -248,21 +248,21 @@
                             <div class="col-auto">
                                 <ul class="ul_none flex wrap al_center kl_fbt_ul">
                                     <li class="kl_fbt_img_0 kl_fbt_img">
-                                        <img class="lz_op_ef lazyload" data-src="/kalles/images/single-product/layout-02/fbt_thumb-01.jpg" src="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%20115%20147%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3C%2Fsvg%3E" alt="Black / S">
+                                        <img class="lz_op_ef lazyload" data-src="/images/single-product/layout-02/fbt_thumb-01.jpg" src="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%20115%20147%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3C%2Fsvg%3E" alt="Black / S">
                                     </li>
                                     <li class="kl_fbt_img kl_fbt_img_2">
                                         <a href="product-detail-layout-01.html" class="dib">
-                                            <img class="lz_op_ef lazyload" data-src="/kalles/images/single-product/layout-02/fbt_thumb-02.jpg" src="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%20115%20147%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3C%2Fsvg%3E" alt="Ritson Original Mom Jeans">
+                                            <img class="lz_op_ef lazyload" data-src="/images/single-product/layout-02/fbt_thumb-02.jpg" src="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%20115%20147%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3C%2Fsvg%3E" alt="Ritson Original Mom Jeans">
                                         </a>
                                     </li>
                                     <li class="kl_fbt_img kl_fbt_img_3">
                                         <a href="product-detail-layout-01.html" class="dib">
-                                            <img class="lz_op_ef lazyload" data-src="/kalles/images/single-product/layout-02/fbt_thumb-03.jpg" src="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%20115%20147%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3C%2Fsvg%3E" alt="Organza Hair Scrunchie">
+                                            <img class="lz_op_ef lazyload" data-src="/images/single-product/layout-02/fbt_thumb-03.jpg" src="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%20115%20147%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3C%2Fsvg%3E" alt="Organza Hair Scrunchie">
                                         </a>
                                     </li>
                                     <li class="kl_fbt_img kl_fbt_img_4">
                                         <a href="product-detail-layout-01.html" class="dib">
-                                            <img class="lz_op_ef lazyload" data-src="/kalles/images/single-product/layout-02/fbt_thumb-04.jpg" src="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%20115%20147%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3C%2Fsvg%3E" alt="Retro Lace Up Sneakers">
+                                            <img class="lz_op_ef lazyload" data-src="/images/single-product/layout-02/fbt_thumb-04.jpg" src="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%20115%20147%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3C%2Fsvg%3E" alt="Retro Lace Up Sneakers">
                                         </a>
                                     </li>
                                 </ul>
@@ -276,7 +276,7 @@
                             </div>
                         </div>
 
-                        <ul class="ul_none mt__30 mb__30">
+                        {{!-- <ul class="ul_none mt__30 mb__30">
                             <li class="kl_fbt_li kl_fbt_checked" data-sl=".kl_fbt_img">
                                 <input type="checkbox" checked="checked" class="js_fbt_ck" id="kl_fbt_ck_1">
                                 <label for="kl_fbt_ck_1" class="pr pe_none">
@@ -327,10 +327,11 @@
                                 </select>
                                 <span class="kl_fbt_price"><del>$45.00</del> <ins>$30.00</ins></span>
                             </li>
-                        </ul>
+                        </ul> --}}
                     </form>
                 </div>
             </div>
+
             <!--Frequently Bought Together Section-->
 
             <div id="wrap_des_pr">
@@ -339,14 +340,14 @@
                         <ul class="ul_none ul_tabs is-flex fl_center fs__16 des_mb_2 des_style_1">
                             <li class="tab_title_block active">
                                 <a class="db cg truncate pr" href="#tab_product_description">Description</a></li>
-                            <li class="tab_title_block">
+                            {{!-- <li class="tab_title_block">
                                 <a class="db cg truncate pr" href="#tab_additional_information">Additional Information</a>
-                            </li>
+                            </li> --}}
                             <li class="tab_title_block">
                                 <a class="db cg truncate pr" href="#tab_wash_and_care">Wash &amp; Care</a></li>
-                            <li class="tab_title_block">
+                            {{!-- <li class="tab_title_block">
                                 <a class="db cg truncate pr" href="#tab_reviews_product">Reviews</a>
-                            </li>
+                            </li> --}}
                         </ul>
                         <div class="panel entry-content sp-tab des_mb_2 des_style_1 active" id="tab_product_description">
                             <div class="js_ck_view"></div>
@@ -358,6 +359,7 @@
                                     <div class="col-12 col-md-6 tc">
                                         <h6>FIGHTING FIT</h6>
                                         <div class="mb__30">
+                                            THIS NEEDS FIXING from the Database
                                             Go sporty this summer with this vintage navy and white striped v-neck t-shirt from the Abercrombie &amp; Fitch. Perfect for pairing with denim and white kicks for a stylish sporty vibe. Will fit a UK 8-10, model shown is a
                                             UK 8 and 5’5. !!<br/>
                                             <br/>
